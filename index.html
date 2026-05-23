@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matt Xavier Nono — Fintech Writer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0f0e0c;
+  --ink-muted: #6b6760;
+  --ink-faint: #c4c1ba;
+  --paper: #f7f5f0;
+  --paper-warm: #ede9e0;
+  --accent: #1a3a2a;
+  --accent-mid: #2d5c3f;
+  --accent-light: #e8f0eb;
+  --rule: #d8d4cb;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2.5rem;
+  background: var(--paper);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+nav.scrolled { border-bottom-color: var(--rule); }
+.nav-name {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links .cta {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+}
+.nav-links .cta:hover { background: var(--accent-mid); color: #fff; }
+
+/* HERO */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 8rem 2.5rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-rule {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--accent);
+}
+
+.hero-tag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.hero-tag::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--ink-muted);
+}
+
+.hero-name {
+  font-family: var(--serif);
+  font-size: clamp(3.5rem, 9vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 2.5rem;
+  max-width: 900px;
+}
+.hero-name em {
+  font-style: italic;
+  color: var(--accent-mid);
+}
+
+.hero-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: end;
+  max-width: 900px;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+
+.hero-bio {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--ink-muted);
+  line-height: 1.7;
+  max-width: 440px;
+}
+
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+.pill {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  color: var(--ink-muted);
+  background: transparent;
+}
+
+/* SECTIONS */
+section { padding: 6rem 2.5rem; max-width: 900px; margin: 0 auto; }
+
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.section-heading {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+/* WORK */
+#work { padding-top: 2rem; }
+
+.work-group { margin-bottom: 4rem; }
+.work-group-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-mid);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.work-group-label::before {
+  content: '';
+  width: 16px;
+  height: 2px;
+  background: var(--accent-mid);
+}
+
+.sample {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 1.5rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--rule);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.sample:last-child { border-bottom: 1px solid var(--rule); }
+.sample:hover { padding-left: 0.5rem; }
+.sample:hover .sample-arrow { transform: translate(4px, -4px); color: var(--accent); }
+
+.sample-type {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.4rem;
+}
+.sample-title {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+.sample-desc {
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: var(--ink-muted);
+  line-height: 1.6;
+  max-width: 560px;
+}
+.sample-source {
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+  margin-top: 0.5rem;
+}
+.sample-arrow {
+  font-size: 1.2rem;
+  color: var(--ink-faint);
+  transition: all 0.2s;
+  padding-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+.ghost-note {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--accent-light);
+  border-left: 2px solid var(--accent-mid);
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-style: italic;
+}
+
+/* GENERAL WRITING */
+.general-samples { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); margin-top: 1rem; }
+.gen-sample {
+  background: var(--paper);
+  padding: 1.25rem 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+}
+.gen-sample:hover { background: var(--paper-warm); }
+.gen-sample-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.35rem; font-weight: 500; }
+.gen-sample-title { font-size: 0.95rem; color: var(--ink); line-height: 1.4; }
+
+/* ABOUT */
+#about { border-top: 1px solid var(--rule); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-text {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--ink-muted);
+  line-height: 1.8;
+}
+.about-text p + p { margin-top: 1rem; }
+.skills-list { list-style: none; }
+.skills-list li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.skills-list li::before { content: '—'; color: var(--ink-faint); }
+
+/* CONTACT */
+#contact {
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contact-heading {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+.contact-heading em { font-style: italic; color: var(--accent-mid); }
+.contact-sub {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--ink-muted);
+  max-width: 420px;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+.contact-email {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 2px;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+}
+.contact-email:hover { color: var(--accent-mid); }
+.contact-note {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.06em;
+}
+
+/* FOOTER */
+footer {
+  padding: 2rem 2.5rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+footer p { font-size: 0.78rem; color: var(--ink-faint); }
+
+/* FADE IN */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: none; }
+
+/* MOBILE */
+@media (max-width: 680px) {
+  nav { padding: 1rem 1.25rem; }
+  #hero { padding: 7rem 1.25rem 3rem; }
+  .hero-bottom { grid-template-columns: 1fr; }
+  .hero-pills { justify-content: flex-start; }
+  section { padding: 4rem 1.25rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .general-samples { grid-template-columns: 1fr; }
+  .sample { grid-template-columns: 1fr auto; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  .nav-links .cta { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <span class="nav-name">Matt Xavier Nono</span>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="cta">Get in touch</a>
+  </div>
+</nav>
+
+<div id="hero">
+  <div class="hero-rule"></div>
+  <div class="hero-tag">Fintech Content Writer &amp; Copywriter</div>
+  <h1 class="hero-name">Words that <em>rank,</em><br>research that holds.</h1>
+  <div class="hero-bottom">
+    <p class="hero-bio">
+      I write broker reviews, platform guides, trading how-tos, and regulatory content for fintech brands — research-driven, SEO-optimized, and accurate enough for compliance-conscious clients.
+    </p>
+    <div class="hero-pills">
+      <span class="pill">Fintech</span>
+      <span class="pill">Crypto</span>
+      <span class="pill">Personal Finance</span>
+      <span class="pill">SaaS</span>
+      <span class="pill">SEO</span>
+      <span class="pill">Ghostwriting</span>
+    </div>
+  </div>
+</div>
+
+<section id="work">
+  <div class="section-label">Selected work</div>
+
+  <div class="work-group fade-in">
+    <div class="work-group-label">Platform guides &amp; walkthroughs</div>
+
+    <a class="sample" href="https://docs.google.com/document/d/1XTDt6aghNd368sCmnT_3UZiCGVa4gy7bc-1TOQVsKLE/edit" target="_blank" rel="noopener">
+      <div>
+        <div class="sample-type">Platform walkthrough</div>
+        <div class="sample-title">Deriv TradingView: Charts, Features, and How to Access Them</div>
+        <div class="sample-desc">Full breakdown of Deriv's TradingView integration — what it includes, where it works, and how it compares to TradingView.com. Covers compliance nuances around synthetic indices.</div>
+        <div class="sample-source">Unpublished sample · Deriv</div>
+      </div>
+      <div class="sample-arrow">↗</div>
+    </a>
+
+    <a class="sample" href="https://docs.google.com/document/d/1noZA9Zom4K06IWmE493Qmll2eK-IqH1tu_Fd98dhkG4/edit" target="_blank" rel="noopener">
+      <div>
+        <div class="sample-type">How-to guide</div>
+        <div class="sample-title">Deriv Demo Account: What You Get, How It Works, and How to Use It Properly</div>
+        <div class="sample-desc">Features, limitations, and an honest comparison of demo vs real trading conditions — written for retail traders in South Africa, India, and Pakistan.</div>
+        <div class="sample-source">Unpublished sample · Deriv</div>
+      </div>
+      <div class="sample-arrow">↗</div>
+    </a>
+
+    <a class="sample" href="https://docs.google.com/document/d/1m4XWpgGMZURE4dC8Zp-tSHIR1pcuxIAzrh6Rq6K6aLM/edit" target="_blank" rel="noopener">
+      <div>
+        <div class="sample-type">Troubleshooting guide</div>
+        <div class="sample-title">Deriv Login: How to Sign In and Fix Common Problems</div>
+        <div class="sample-desc">Login methods, 2FA setup, account restriction troubleshooting, and error resolution — structured for traders across multiple regions with platform-specific edge cases.</div>
+        <div class="sample-source">Unpublished sample · Deriv</div>
+      </div>
+      <div class="sample-arrow">↗</div>
+    </a>
+
+    <a class="sample" href="https://docs.google.com/document/d/1WBZprRq57tO06hl53o8QIMsTzWlH9xWIMANJCDlYHik/edit" target="_blank" rel="noopener">
+      <div>
+        <div class="sample-type">Platform walkthrough</div>
+        <div class="sample-title">Deriv — Additional Platform Guide</div>
+        <div class="sample-desc">In-depth guide covering a core Deriv product — regulation, platform features, and trader considerations.</div>
+        <div class="sample-source">Unpublished sample · Deriv</div>
+      </div>
+      <div class="sample-arrow">↗</div>
+    </a>
+  </div>
+
+  <div class="work-group fade-in">
+    <div class="work-group-label">Broker reviews</div>
+
+    <a class="sample" href="https://www.beyond2015.org/exness/" target="_blank" rel="noopener">
+      <div>
+        <div class="sample-type">Broker review · Published</div>
+        <div class="sample-title">Exness: Is It a Good and Safe Broker for Beginners?</div>
+        <div class="sample-desc">Regulatory overview, account types, spreads, and safety assessment for one of the most traded brokers in Asia and Africa.</div>
+        <div class="sample-source">beyond2015.org</div>
+      </div>
+      <div class="sample-arrow">↗</div>
+    </a>
+
+    <a class="sample" href="https://www.beyond2015.org/zerodha/" target="_blank" rel="noopener">
+      <div>
+        <div class="sample-type">Broker review · Published</div>
+        <div class="sample-title">Zerodha: Is It Safe and Legit or a Scam?</div>
+        <div class="sample-desc">Review of India's largest discount broker — platform, fees, regulatory standing, and verdict for retail investors.</div>
+        <div class="sample-source">beyond2015.org</div>
+      </div>
+      <div class="sample-arrow">↗</div>
+    </a>
+
+    <a class="sample" href="https://www.beyond2015.org/groww/" target="_blank" rel="noopener">
+      <div>
+        <div class="sample-type">Broker review · Published</div>
+        <div class="sample-title">Groww Review</div>
+        <div class="sample-desc">Feature and safety review of Groww, India's fastest-growing retail investing platform.</div>
+        <div class="sample-source">beyond2015.org</div>
+      </div>
+      <div class="sample-arrow">↗</div>
+    </a>
+  </div>
+
+  <div class="ghost-note fade-in">
+    Additional fintech samples available on request — ghostwritten work for trading platforms across South Africa and Southeast Asia.
+  </div>
+
+  <div class="work-group fade-in" style="margin-top:4rem">
+    <div class="work-group-label">General writing</div>
+    <p style="font-size:0.875rem;font-weight:300;color:var(--ink-muted);margin-bottom:1.5rem">Before specializing in fintech, I covered tech, culture, and general topics.</p>
+    <div class="general-samples">
+      <a class="gen-sample" href="https://medium.com/@Matt__Xavier/5-essential-features-you-need-in-your-audio-editor-fa121c6ec302" target="_blank" rel="noopener">
+        <div class="gen-sample-label">Tech · Medium</div>
+        <div class="gen-sample-title">5 Essential Features You Need in Your Audio Editor</div>
+      </a>
+      <a class="gen-sample" href="https://medium.com/@Matt__Xavier/how-does-social-media-changed-the-game-1019065c8c94" target="_blank" rel="noopener">
+        <div class="gen-sample-label">Culture · Medium</div>
+        <div class="gen-sample-title">How Did Social Media Change the Landscape of Society?</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div>
+      <h2 class="section-heading fade-in">Three years in fintech.<br>Built for the long read.</h2>
+      <div class="about-text fade-in">
+        <p>I'm a freelance content writer based in the Philippines, specializing in fintech and trading content. I write the kind of articles that compliance editors don't have to fix — accurate on regulation, honest about risk, and structured for the traders who actually need to understand what they're reading.</p>
+        <p>Before fintech, I spent time evaluating AI-generated content for international platforms — which means I understand both what good writing looks like and why it matters at scale.</p>
+        <p>Open to fintech, crypto, personal finance, SaaS, and any industry where technical content needs to be readable by real people.</p>
+      </div>
+    </div>
+    <div class="fade-in">
+      <ul class="skills-list">
+        <li>Fintech &amp; trading content</li>
+        <li>Broker reviews &amp; regulatory explainers</li>
+        <li>SEO writing &amp; keyword research</li>
+        <li>Platform walkthroughs &amp; how-to guides</li>
+        <li>Ghostwriting</li>
+        <li>Editing &amp; proofreading</li>
+        <li>AI content evaluation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <h2 class="contact-heading fade-in">Let's work <em>together.</em></h2>
+  <p class="contact-sub fade-in">Available for ongoing contracts and one-off projects. If you need a fintech writer who understands trading platforms, broker regulations, and how to write for retail traders — reach out.</p>
+  <a class="contact-email fade-in" href="mailto:nonomattxavier@gmail.com">nonomattxavier@gmail.com</a>
+  <p class="contact-note fade-in">Response within 24–48 hours · Ghostwriting enquiries welcome</p>
+</section>
+
+<footer>
+  <p>© 2026 Matt Xavier Nono</p>
+  <p>Fintech Content Writer &amp; Copywriter · Philippines</p>
+</footer>
+
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
